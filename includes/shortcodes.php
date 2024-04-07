@@ -33,7 +33,6 @@ function erm_shortcode_menu( $atts, $content = null ) {
     // Title & description Menu
     $menu_post = get_post( $post_id );
     $html  = '<div class="erm_menu">';
-    $html .= '<h1 class="erm_title">'.$menu_post->post_title.'</h1>';
     $html .= '<div class="erm_desc">'.apply_filters('the_content', $menu_post->post_content).'</div>';
 
     // Menu items
@@ -56,6 +55,7 @@ function erm_shortcode_menu( $atts, $content = null ) {
             $html .= '<li class="erm_section">';
             $html .= '<h2 class="erm_section_title">'.$post->post_title.'</h2>';
             $html .= '<div class="erm_section_desc">'.apply_filters( 'the_content', $post->post_content ).'</div>';
+            $html .= '<div class="erm_section_desc desc_alt">'.get_post_meta( $item_id, '_erm_content_alt')['0'].'</div>';
             $html .= '</li>';
         }
         else if ( $type == 'product' ) {
@@ -72,7 +72,13 @@ function erm_shortcode_menu( $atts, $content = null ) {
                 $desc = $post_image->post_content;
                 $html .= '<a class="image-popup" target="_blank" href="'.$src_full.'" data-caption="'.esc_attr($caption).'" data-desc="'.esc_attr($desc).'"><img class="erm_product_image" alt="'.esc_attr($alt).'" src="'.$src_thumb.'"></a>';
             }
+            $html .= '<div class="erm_product_container">';
             $html .= '<h3 class="erm_product_title">'.$post->post_title.'</h3>';
+            $html .= '<h3 class="erm_product_title title_alt">'.get_post_meta( $item_id, '_erm_title_alt')['0'].'</h3>';
+
+            $html .= '<div class="erm_product_desc">'.apply_filters('the_content', $post->post_content).'</div>';
+            $html .= '<div class="erm_product_desc desc_alt">'.get_post_meta( $item_id, '_erm_content_alt')['0'].'</div>';
+            $html .= '</div>';
 
             $html .= '<div class="erm_product_price">';
             $prices = get_post_meta( $item_id, '_erm_prices', true );
@@ -84,11 +90,7 @@ function erm_shortcode_menu( $atts, $content = null ) {
                 $html .= '</ul>';
             }
             $html .= '</div>';
-
-            $html .= '<div class="erm_product_desc">'.apply_filters('the_content', $post->post_content).'</div>';
-            $html .= '<div class="erm_product_desc_alt">'.apply_filters('the_content', get_post_meta( $item_id, '_erm_desc_alt', true ) ).'</div>';
-
-            $html .= '<div class="clear"></div>';
+            
             $html .= '</li>';
         }
     }
