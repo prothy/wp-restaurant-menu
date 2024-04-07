@@ -25,13 +25,15 @@ function erm_update_menu_item() {
         $post_id = absint( $_POST['post_id'] );
 
         wp_update_post(array(
-            'ID'            => $post_id,
-            'post_title'    => $_POST['title'],
-            'post_name'     => $_POST['title'],
-            'post_content'  => $_POST['content'],
+            'ID'                => $post_id,
+            'post_title'        => $_POST['title'],
+            'post_name'         => $_POST['title'],
+            'post_content'      => $_POST['content'],
         ));
         update_post_meta( $post_id, '_erm_visible', $_POST['visible'] == 'true' ? true : false );
         update_post_meta( $post_id, '_erm_prices', $_POST['prices']);
+        update_post_meta( $post_id, '_erm_title_alt', $_POST['title_alt']);
+        update_post_meta( $post_id, '_erm_content_alt', $_POST['content_alt']);
 
         $image_id = absint( $_POST['image_id'] );
         if ( $image_id != 0 ) {
@@ -83,7 +85,9 @@ function erm_create_menu_item() {
             'id'        => $post_id,
             'type'      => $type,
             'title'     => 'New',
+            'title_alt'     => 'New',
             'content'   => '',
+            'content_alt'   => '',
             'image_id'  => 0,
             'src_thumb' => '',
             'src_big'   => '',

@@ -36,7 +36,9 @@
                         </td>
                         <td class="edit-content">
                             <div style="text-align: right; margin-bottom: 5px;"><a data-bind="attr:{href: link}">Edit POST</a></div>
+                            <input style="width: 100%;" class="" data-bind="value: title_alt, css:{'visible': editing()}">
                             <textarea class="menu_item_desc" data-bind="attr:{'id': editor_id}, tinyMCE: content" placeholder=""></textarea>
+                            <textarea class="menu_item_desc" data-bind="attr:{'id': editor_id_alt}, tinyMCE: content_alt" placeholder=""></textarea>
                             <div class="edit-prices" data-bind="sortable: {data:prices, options:{axis:'y', handle:'.icon-move-price'}}">
                                 <div class="item-price">
                                     <i class="icon-move-price fa fa-bars"></i>

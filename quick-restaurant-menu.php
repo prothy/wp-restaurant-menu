@@ -1,11 +1,10 @@
 <?php
 /**
- * Plugin Name: Quick Restaurant Menu
- * Plugin URI: http://thingsforrestaurants.com
- * Description: Create Restaurants Menus
- * Author: Alejandro Pascual
- * Author URI: http://thingsforrestaurants.com
- * Version: 1.2
+ * Plugin Name: Garzon Restaurant Menu
+ * Description: Quick Restaurant Menu by A. Pascual adjusted for Garzon
+ * Author: Luka Csurgay
+ * Author URI: http://github.com/prothy
+ * Version: 0.1.0
  * Text Domain: erm
  * Domain Path: languages
  *
@@ -24,8 +23,8 @@
  *
  * @package ERM
  * @category Core
- * @author Alejandro Pascual
- * @version 1.0.0
+ * @author Luka Csurgay
+ * @version 0.1.0
  */
 
 // Exit if accessed directly

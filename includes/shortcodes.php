@@ -86,6 +86,7 @@ function erm_shortcode_menu( $atts, $content = null ) {
             $html .= '</div>';
 
             $html .= '<div class="erm_product_desc">'.apply_filters('the_content', $post->post_content).'</div>';
+            $html .= '<div class="erm_product_desc_alt">'.apply_filters('the_content', get_post_meta( $item_id, '_erm_desc_alt', true ) ).'</div>';
 
             $html .= '<div class="clear"></div>';
             $html .= '</li>';

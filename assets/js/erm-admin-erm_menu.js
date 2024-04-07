@@ -134,7 +134,10 @@ jQuery(document).ready(function($){
         self.is_product = function() { return self.type == 'product'; }
         self.is_section = function() { return self.type == 'section'; }
         self.title = ko.observable( el.title );
+        self.title_alt = ko.observable( el.title_alt );
+
         self.content = ko.observable( el.content );
+        self.content_alt = ko.observable( el.content_alt );
 
         self.image_id = ko.observable( el.image_id );
         self.image_title = ko.observable( el.image_title );
@@ -190,16 +193,18 @@ jQuery(document).ready(function($){
             self.editing( !self.editing() );
             if ( !self.editing() ) {
                 self.content( tinyMCE.get(self.editor_id).getContent() );
+                self.content_alt( tinyMCE.get(self.editor_id_alt).getContent() );
                 self.save();
             }
         };
 
         // Editor tinyMCE
         self.editor_id = 'editor_'+self.id;
+        self.editor_id_alt = 'editor_'+self.id+'_alt';
 
         //Prices
         self.prices = ko.observableArray([]);
-        jQuery.each(el.prices, function(index, item){
+        jQuery.each(el.prices, function(index, item){ 
             self.prices.push({
                 name: item.name,
                 value: item.value
@@ -225,7 +230,9 @@ jQuery(document).ready(function($){
                 action: 'erm_update_menu_item',
                 post_id: self.id,
                 title: self.title(),
+                title_alt: self.title_alt(),
                 content: self.content(),
+                content_alt: self.content_alt(),
                 image_id: self.image_id(),
                 visible: self.visible(),
                 prices: []
