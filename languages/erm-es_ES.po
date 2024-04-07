@@ -289,11 +289,11 @@ msgstr "No se han encontrado menús en la papelera"
 msgid "Rest. Menus Week"
 msgstr "Rest. Menú Semana"
 
-#: quick-restaurant-menu.php:83
+#: garzon-restaurant-menu.php:83
 msgid "Clone is not allowed"
 msgstr "Clone is not allowed"
 
-#: quick-restaurant-menu.php:93
+#: garzon-restaurant-menu.php:93
 msgid "Unserializing is not allowed"
 msgstr "Unserializing is not allowed"
 
