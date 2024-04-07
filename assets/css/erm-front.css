@@ -53,3 +53,23 @@ div.erm_menu {
     font-size: 15pt;
     font-weight: bold;
 }
+
+@media (max-width: 480px) {
+    .erm_product {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .erm_product {
+        flex-basis: 0;
+    }
+
+    .image-popup {
+        max-width: initial;
+        flex-basis: 100%;
+    }
+
+    .image-popup .erm_product_image {
+        width: 10rem;
+    }
+}
