@@ -50,12 +50,14 @@ function erm_shortcode_menu( $atts, $content = null ) {
 
         $post = get_post( $item_id );
         $type = get_post_meta( $item_id, '_erm_type', true );
+        $title_alt = get_post_meta( $item_id, '_erm_title_alt');
+        $content_alt = get_post_meta( $item_id, '_erm_content_alt');
 
         if ( $type == 'section' ) {
             $html .= '<li class="erm_section">';
             $html .= '<h2 class="erm_section_title">'.$post->post_title.'</h2>';
             $html .= '<div class="erm_section_desc">'.apply_filters( 'the_content', $post->post_content ).'</div>';
-            $html .= '<div class="erm_section_desc desc_alt">'.get_post_meta( $item_id, '_erm_content_alt')['0'].'</div>';
+            if (count($content_alt) > 0) $html .= '<div class="erm_section_desc desc_alt">'.$content_alt['0'].'</div>';
             $html .= '</li>';
         }
         else if ( $type == 'product' ) {
@@ -74,10 +76,10 @@ function erm_shortcode_menu( $atts, $content = null ) {
             }
             $html .= '<div class="erm_product_container">';
             $html .= '<h3 class="erm_product_title">'.$post->post_title.'</h3>';
-            $html .= '<h3 class="erm_product_title title_alt">'.get_post_meta( $item_id, '_erm_title_alt')['0'].'</h3>';
+            if (count($title_alt) > 0) $html .= '<h3 class="erm_product_title title_alt">'.$title_alt['0'].'</h3>';
 
             $html .= '<div class="erm_product_desc">'.apply_filters('the_content', $post->post_content).'</div>';
-            $html .= '<div class="erm_product_desc desc_alt">'.get_post_meta( $item_id, '_erm_content_alt')['0'].'</div>';
+            if (count($content_alt) > 0) $html .= '<div class="erm_product_desc desc_alt">'.$content_alt['0'].'</div>';
             $html .= '</div>';
 
             $html .= '<div class="erm_product_price">';
